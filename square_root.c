@@ -1,17 +1,36 @@
+/*
+ * Program to calculate square root of a given positive number without using any inbuilt function.
+ *
+ * Compilation: gcc -o square_root square_root.c
+ * Execution: ./square_root
+ *
+ * @Ujjwal, 1910991390, 17/07/2021
+ * Assignment 1 (Homework)
+ */
+
 #include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
 
-float binary_search(int n, int left, int p) {
-    int right = n;
+/*
+ * Function to calculate square root of a number
+ * 
+ * Parameters
+ * number: integer number whose square root to be calculated
+ * precision: integer number for precision
+ * 
+ * Return the square root of given integer number
+ */
+
+float square_root_binary_search(int number, int left, int precision) {
+    int right = number;
     float ans;
     while(left <= right) {
         int mid = (left + right)/2;
-        if(mid * mid == n) {
+        if(mid * mid == number) {
             ans = mid;
             break;
         }
-        if(mid * mid < n) {
+        if(mid * mid < number) {
             ans = left;
             left = mid + 1;
         }
@@ -20,27 +39,29 @@ float binary_search(int n, int left, int p) {
         }
     }
     float increment = 0.1;
-    for(int i = 0; i <= p; i++) {
-        while(ans * ans < n) {
+    for(int i = 0; i <= precision; i++) {
+        while(ans * ans < number) {
             ans += increment;
         }
         ans -= increment;
         increment = increment/10;
     }
-    int temp = ans * pow(10,p);
-    ans = temp / pow(10,p);
+    int temp = ans * pow(10,precision);
+    ans = temp / pow(10,precision);
     return ans;
 }
 
 int main()
 {
-    int n,p;
+    int number,precision;
     float result;
+    
     printf("Enter the number : ");
-    scanf("%d",&n);
+    scanf("%d",&number);
     printf("Enter the precision : ");
-    scanf("%d",&p);
-    result = binary_search(n,0,p);
+    scanf("%d",&precision);
+    
+    result = square_root_binary_search(number,0,precision);
     printf("Answer is : %g",result);
 
     return 0;
