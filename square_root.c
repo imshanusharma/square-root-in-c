@@ -39,15 +39,13 @@ float square_root_binary_search(int number, int left, int precision) {
         }
     }
     float increment = 0.1;
-    for(int i = 0; i <= precision; i++) {
+    for(int i = 0; i < precision; i++) {
         while(ans * ans < number) {
             ans += increment;
         }
         ans -= increment;
         increment = increment/10;
     }
-    int temp = ans * pow(10,precision);
-    ans = temp / pow(10,precision);
     return ans;
 }
 
