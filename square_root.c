@@ -9,7 +9,6 @@
  */
 
 #include <stdio.h>
-#include <math.h>
 
 /*
  * Function to calculate square root of a number
@@ -21,7 +20,9 @@
  * Return the square root of given integer number
  */
 
-float square_root_binary_search(int number, int left, int precision) {
+float square_root_binary_search(int number, int precision) {
+    
+    int left = 0;
     int right = number;
     float ans;
     while(left <= right) {
@@ -59,7 +60,7 @@ int main()
     printf("Enter the precision : ");
     scanf("%d",&precision);
     
-    result = square_root_binary_search(number,0,precision);
+    result = square_root_binary_search(number,precision);
     printf("Answer is : %g",result);
 
     return 0;
